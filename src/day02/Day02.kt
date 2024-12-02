@@ -6,18 +6,9 @@ fun main() {
         map { line -> line.split(" ").map { it.toInt() } }
 
     fun List<Int>.isSafe(): Boolean {
-        var decreasing : Boolean? = null
-        return this.windowed(2).all {
-            val first = it[0]
-            val second = it[1]
-            val thisDecreasing = first > second
-            val delta = abs(first - second)
-            if (decreasing == null) {
-                decreasing = thisDecreasing
-            }
 
-            decreasing == thisDecreasing && delta <= 3 && first != second
-        }
+        val deltas = this.windowed(2).map { it[0] - it[1] }
+        return (deltas.all { it < 0 } || deltas.all { it > 0 }) && deltas.all { abs(it) <= 3 }
     }
 
     fun List<Int>.dampen(): List<List<Int>> = this.map { this.minus(it) }
