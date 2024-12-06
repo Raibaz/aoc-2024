@@ -26,7 +26,7 @@ fun main() {
     fun String.toIntList(): List<Int> {
         return this.split(",").map { it.toInt() }
     }
-    
+
     fun List<Int>.findFirstBrokenRule(mustPreceed: Rule, mustFollow: Rule): Pair<Int, Int>? {
         this.forEachIndexed { index, i ->
             val before = this.take(index)
