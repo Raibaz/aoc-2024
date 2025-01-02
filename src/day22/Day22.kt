@@ -2,7 +2,6 @@ package day22
 
 import println
 import readInput
-import kotlin.math.roundToLong
 
 fun Long.generateNext(): Long {
     var cur = this
@@ -24,7 +23,7 @@ fun main() {
         val inputs = input.map { it.toLong() }
         return inputs.sumOf {
             var cur = it
-            (1..2000).forEach {
+            (1..2000).forEach { _ ->
                 cur = cur.generateNext()
             }
             println("$it -> $cur")
@@ -38,7 +37,6 @@ fun main() {
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day22/Day22_test")
-    //part1(listOf("123"))
     check(part1(testInput) == 37327623L)
 
     val input = readInput("Day22/Day22")
